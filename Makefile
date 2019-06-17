@@ -1,7 +1,7 @@
 .PHONY: build, docker
 
-build: 
+build:
 	go build -o micro main.go plugins.go
 
 docker:
-	docker build . -t micro:custom
+	docker build . -t saaskit/micro:latest && docker push saaskit/micro:latest
