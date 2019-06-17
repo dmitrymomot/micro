@@ -1,0 +1,10 @@
+.git
+.gitignore
+.dockerignore
+.env.local
+docker-compose.yml
+Dockerfile
+LICENSE
+README.md
+.vscode
+.DS_Store
