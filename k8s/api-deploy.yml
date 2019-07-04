@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-proxy
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 50%
+  template:
+    metadata:
+      labels:
+        app: api-proxy
+    spec:
+      containers:
+        - name: api-proxy
+          image: microhq/micro:kubernetes
+          args:
+            - "api"
+            - "--handler=api"
+            - "--namespace=io.dataspark"
+          env:
+            - name: MICRO_API_ADDRESS
+              value: ":8000"
+          ports:
+            - containerPort: 8000
+              name: api-proxy-port

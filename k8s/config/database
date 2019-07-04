@@ -1,0 +1,5 @@
+driver=mysql
+host=localhost
+user=test
+password=testpasswd
+name=test_db
